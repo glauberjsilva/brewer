@@ -33,33 +33,34 @@ public class Cerveja {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
-	@SKU
 	@NotBlank(message = "SKU é obrigatório")
+	@SKU
 	private String sku;
-
+	
 	@NotBlank(message = "Nome é obrigatório")
+	@Size(max = 50, message = "O nome da cerveja deve conter no máximo {1} caracteres")
 	private String nome;
 
 	@NotBlank(message = "A descição é obrigatória")
-	@Size(max = 50, message = "O tamanho da descrição deve estar entre 01 a 50")
+	@Size(max = 50, message = "O tamanho da descrição deve estar entre 01 a {1}")
 	private String descricao;
 
 	@NotNull(message = "Valor é obrigatório")
-	@DecimalMin(value = "0.50", message = "O valor da cerveja deve ser maior que R$0,50")
-	@DecimalMax(value = "9999999.99", message = "O valor não pode ser maior que R$9.999.999,99")
+	@DecimalMin(value = "0.50", message = "O valor da cerveja deve ser maior que R$ 0.50")
+	@DecimalMax(value = "9999999.99", message = "O valor não pode ser maior que R$ 9.999.999,99")
 	private BigDecimal valor;
 
 	@NotNull(message = "O teor alcóolico é obrigatório")
-	@DecimalMax(value = "100.0", message = "O teor alcóolico deve ser menor do que 100")
+	@DecimalMax(value = "100", message = "O teor alcóolico deve ser menor do que 100%")
 	@Column(name = "teor_alcoolico")
 	private BigDecimal teorAlcoolico;
 
 	@NotNull(message = "A comissão é obrigatória")
-	@DecimalMax(value = "100.00", message = "A comissão deve ser igual ou menor do que 100")
-	private BigDecimal comissao;
+	@DecimalMax(value = "100", message = "A comissão deve ser igual ou menor do que 100%")
+	private BigDecimal comissao;	
 
 	@NotNull(message = "A quantidade em estoque é obrigatória")
-	@Max(value = 9999, message = "A quantidade em estoque deve ser menor que 9.999")
+	@Max(value = 1000, message = "A quantidade em estoque deve ser menor que {1}")
 	@Column(name = "quantidade_estoque")
 	private Integer quantidadeEstoque;
 
