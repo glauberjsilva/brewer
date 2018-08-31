@@ -9,17 +9,17 @@ Brewer.MaskMoney = (function() {
 	
 	MaskMoney.prototype.enable = function() {
 		this.decimal.maskMoney({ decimal: ',', thousands: '.' });
-		this.plain.maskMoney({ precision : 0, thousands: '.', decimal:''});
+		this.plain.maskMoney({ precision: 0, thousands: '.' });
 	}
 	
 	return MaskMoney;
-
+	
 }());
 
 $(function() {
 	var maskMoney = new Brewer.MaskMoney();
 	maskMoney.enable();
-)};
+});
 
 /*$(function() {
 	var decimal = $('.js-decimal');
